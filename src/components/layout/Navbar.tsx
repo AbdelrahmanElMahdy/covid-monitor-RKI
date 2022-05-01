@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Navbar,Nav,Container} from "react-bootstrap"
+import { Navbar, Nav, Container } from "react-bootstrap";
 export interface navbarProps {}
 
 export default function NavbarC(props: navbarProps) {
