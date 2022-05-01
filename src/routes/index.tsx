@@ -6,6 +6,7 @@ import history from "../utils/history";
 import Monitor from "../components/monitor/Monitor";
 import NavbarC from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+import State from "../components/monitor/State";
 const Home = lazy(() => import("../views/home/App"));
 
 const IndexRouter: React.FC = (): ReactElement => {
@@ -17,6 +18,12 @@ const IndexRouter: React.FC = (): ReactElement => {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/monitor" exact component={Monitor} />
+            <Route path="/monitor/:state([A-Za-z]+)/" exact component={State} />
+            <Route
+              path="/monitor/:state([A-Za-z]+)/:district([A-Za-z]+)/"
+              exact
+              component={State}
+            />
           </Switch>
         </Suspense>
       </Router>
