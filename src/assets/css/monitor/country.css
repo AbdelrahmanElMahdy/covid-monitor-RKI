@@ -1,0 +1,13 @@
+.country-name{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+    font-weight: 600;
+}
+img {
+    width: auto !important; /*override the width below*/
+    width: 70vw;
+    max-width: 80vw;
+    height: 60vh;
+    float: left;
+    clear: both;
+  }
