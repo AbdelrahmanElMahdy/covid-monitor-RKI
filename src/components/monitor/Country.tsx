@@ -43,15 +43,12 @@ export default function Country(props: MonitorProps) {
   const { country } = useParams<CountryParams>();
   const [lineChartData, setLineChartData] = React.useState<LineChartdata>({
     datasets: [],
+    labels: [],
   });
-  const [labels, setLabels] = React.useState<string[]>([]);
   React.useEffect(() => {
     const fetch = async () => {
-      let data: any[], dates: string[];
-      [data, dates] = await getConditionsLineChartData();
-
-      setLineChartData({ datasets: data });
-      setLabels(dates);
+      let data: LineChartdata = await getConditionsLineChartData();
+      setLineChartData(data);
     };
     fetch();
   }, []);
@@ -67,7 +64,10 @@ export default function Country(props: MonitorProps) {
         <Col className="m-5">
           <Line
             options={options}
-            data={{ labels: labels, datasets: lineChartData.datasets }}
+            data={{
+              labels: lineChartData.labels,
+              datasets: lineChartData.datasets,
+            }}
           />
         </Col>
         <Col className="m-5 text-center">

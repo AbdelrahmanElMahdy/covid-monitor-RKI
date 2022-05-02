@@ -1,4 +1,4 @@
-import { Case, Death, Recovered } from "../types/types";
+import { Case, Death, LineChartdata, Recovered } from "../types/types";
 import { getDates, prepareForLineChart } from "../utils/utils";
 import { getConditionFromDayAgo } from "./api";
 
@@ -9,8 +9,8 @@ export const getConditionsLineChartData = async () => {
     getConditionFromDayAgo("deaths", 7),
     getConditionFromDayAgo("recovered", 7),
   ]);
-  let data: any = [];
-  data.push(
+  let data: LineChartdata = { datasets: [], labels: [] };
+  data.datasets.push(
     prepareForLineChart(
       cases,
       "cases",
@@ -18,7 +18,7 @@ export const getConditionsLineChartData = async () => {
       { r: 255, g: 99, b: 132, t: 1 }
     )
   );
-  data.push(
+  data.datasets.push(
     prepareForLineChart(
       deaths,
       "deaths",
@@ -26,7 +26,7 @@ export const getConditionsLineChartData = async () => {
       { r: 1, g: 1, b: 1, t: 1 }
     )
   );
-  data.push(
+  data.datasets.push(
     prepareForLineChart(
       recovered,
       "recovered",
@@ -34,6 +34,6 @@ export const getConditionsLineChartData = async () => {
       { r: 53, g: 162, b: 235, t: 1 }
     )
   );
-  let dates = getDates(cases);
-  return [data, dates];
+  data.labels = getDates(cases);
+  return data;
 };
