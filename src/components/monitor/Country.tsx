@@ -47,9 +47,8 @@ export default function Country(props: MonitorProps) {
   const [labels, setLabels] = React.useState<string[]>([]);
   React.useEffect(() => {
     const fetch = async () => {
-      let data:any[], dates: string[];
+      let data: any[], dates: string[];
       [data, dates] = await getConditionsLineChartData();
-      console.log("data",data)
 
       setLineChartData({ datasets: data });
       setLabels(dates);

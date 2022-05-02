@@ -33,7 +33,7 @@ export const getConditionsLineChartData = async () => {
       { r: 53, g: 162, b: 235, t: 0.2 },
       { r: 53, g: 162, b: 235, t: 1 }
     )
-  ); 
-  let dates=getDates(cases)
-  return [data,dates];
+  );
+  let dates = getDates(cases);
+  return [data, dates];
 };
